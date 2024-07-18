@@ -1,0 +1,33 @@
+<!-- index.html -->
+{% extends "plants/base.html" %}
+{% block content %}
+
+<!-- plants/templates/plants/index.html -->
+
+
+<table style="background-color: white;">
+    <thead>
+        <tr>
+            <th style="width: 350px;">Plant Picture</th>
+            <th>Plant Name</th>
+        </tr>
+    </thead>
+    <tbody style="background-color: white;">
+        {% for plant in plants_data %}
+            <tr style="background-color: white;">
+                <td style="background-color: white;"><img src="{{ plant.picture }}" alt="{{ plant.name }}"></td>
+                <td style="background-color: white;">
+                    <form method="post" style="background-color: white;">
+                        {% csrf_token %}
+                        <input type="hidden" name="plant_id" value="{{ plant.id }}">
+                        <input type="text" name="new_name" value="{{ plant.name }}" style="font-size: 12px; width: 100%;">
+                        <button type="submit" style="font-size: 12px; float: right;">Save</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+    
+{% endblock %}
+
