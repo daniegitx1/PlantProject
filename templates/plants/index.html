@@ -6,29 +6,30 @@
 
 
 {% for plant in plants_data %}
-    <table style="background-color: white; border: 1px solid #ccc; border-radius: 4px; width: 80%; margin-bottom: 20px; border-collapse: collapse; box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.2);">
-        <tbody>
-            <tr>
-                <td style="text-align: center; border: none;">
-                    <img src="{{ plant.picture }}" alt="Picture 1" style="width: 300px;">
-                </td>
-                <td style="text-align: center; border: none;">
-                    <img src="{{ plant.picture2 }}" alt="Picture 2" style="width: 300px;">
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2" style="border: none; background-color: white;">
-                    <form method="post">
-                        {% csrf_token %}
-                        <input type="hidden" name="plant_id" value="{{ plant.id }}">
-                        <input type="text" name="new_name" value="{{ plant.name }}" style="font-size: 16px; width: 80%;">
-                        <button type="submit" style="font-size: 16px; float: right; width: 19%; background-color: #696969; color: white;">Save</button>
 
-                    </form>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+<table style="background-color: white; width: 620px; margin-bottom: 20px; border-collapse: collapse; box-shadow: 1px 1px 16px rgba(0, 0, 0, 0.2);border-radius: 6px 6px 6px 6px;">
+    <tbody>
+        <tr>
+            <td style="text-align: center; border: none; border-radius: 6px 0 0 0;">
+                <img src="{{ plant.picture }}" alt="Picture 1" style="width: 300px;">
+            </td>
+            <td style="text-align: center; border: none; border-radius: 0 6px 0 0;">
+                <img src="{{ plant.picture2 }}" alt="Picture 2" style="width: 300px; border-radius: 4px;">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="border: none; background-color: white; border-radius: 0 0 6px 6px;">
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="plant_id" value="{{ plant.id }}">
+                    <input type="text" name="new_name" value="{{ plant.name }}" style="font-size: 16px; width: 80%;">
+                    <button type="submit" style="font-size: 16px; float: right; width: 19%; background-color: #696969; color: white;">Save</button>
+                </form>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
 {% endfor %}
 
 
